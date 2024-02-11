@@ -1,14 +1,22 @@
 package com.zhh.v1;
 
 /**
- * @author zhh
  * @description 手机工厂接口
- * @date 2020-02-10 11:09
  */
-public interface PhoneFactory {
+public class PhoneFactory {
 
-    /**
-     * 获取手机
-     */
-    Phone getPhone();
+    public void call(String phoneType){
+        Phone phone;
+        switch (phoneType){
+            case "IPhone":
+                phone = new IPhone();
+                break;
+            case "MiPhone":
+                phone = new MiPhone();
+                break;
+            default:
+                throw new IllegalArgumentException("Unknown phoneType "+phoneType);
+        }
+        phone.call();
+    }
 }
